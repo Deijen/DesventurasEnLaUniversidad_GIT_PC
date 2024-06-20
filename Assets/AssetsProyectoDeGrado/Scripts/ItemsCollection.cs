@@ -23,11 +23,22 @@ public class ItemsCollection : MonoBehaviour
     private bool display;
 
 
-    //////////7
+    //////////
     public GameObject popup;
+    public GameObject popupSegundoNivelImagen; // Canvas para el segundo nivel donde irán las imagenes.
     public TMP_Text mensaje; 
+    public TMP_Text mensajePOPUPImagen; 
     public string mensajeInfo = "";
 
+    /////////Lógica para las imágenes
+    
+    public Image displayImage; 
+    public GameObject canvasImagen;
+    public Sprite imageExtintorPart1; 
+    public Sprite imageExtintorPart2; 
+    public Sprite imageExtintorPart3;
+    public Sprite imageExtintorPart4;  
+    ////////
 
     //void Start(){
 
@@ -84,10 +95,14 @@ public class ItemsCollection : MonoBehaviour
             ///////////////////////////////////////////////
             //display = EditorUtility.DisplayDialog("Parte: Manguera",
             //    "Esta sería la descripción de la manguera", "Ok", "Cerrar");
-            popup.SetActive(true);
-            mensajeInfo = "Esta es la manguera del extintor, la cual te permite dirigir el agente extintor con precisión. Úsala para apagar el fuego de manera segura y efectiva";
-            mensaje.text = mensajeInfo;
-            
+            popupSegundoNivelImagen.SetActive(true);
+            mensajeInfo = "Esta es la manguera del extintor, la cual te permite dirigir el agente extintor con precisión. Úsala para apagar el fuego de manera segura y efectiva.";
+            mensajePOPUPImagen.text = mensajeInfo;
+            /////////////////
+
+            displayImage.sprite = imageExtintorPart1;
+
+            ///////////////7
 
             // Pausa el juego
             Time.timeScale = 0f;
@@ -109,9 +124,11 @@ public class ItemsCollection : MonoBehaviour
             //    "Esta sería la descripción del pasador de seguridad", "Ok", "Cerrar");
             
             //UnityEngine.Debug.Log("Partes: " + extintorPartCount);
-            popup.SetActive(true);
-            mensajeInfo = "Este es el pasador de seguridad del extintor, el cual evita activaciones accidentales. Retíralo solo en emergencias para liberar el agente extintor";
-            mensaje.text = mensajeInfo;
+            popupSegundoNivelImagen.SetActive(true);
+            mensajeInfo = "Este es el pasador de seguridad del extintor, el cual evita activaciones accidentales. Retíralo solo en emergencias para liberar el agente extintor.";
+            mensajePOPUPImagen.text = mensajeInfo;
+
+            displayImage.sprite = imageExtintorPart2;
             
             // Pausa el juego
             Time.timeScale = 0f;
@@ -128,10 +145,10 @@ public class ItemsCollection : MonoBehaviour
             //EditorUtility.DisplayDialog("Parte: Cilindro",
             //    "Esta sería la descripción del cilindr", "Ok", "Cerrar");
             //UnityEngine.Debug.Log("Partes: " + extintorPartCount); 
-            popup.SetActive(true);
-            mensajeInfo = "Esta es el cilindro del extintor y contiene el agente extintor a presión. Este recipiente permite la liberación controlada de dicho agente para sofocar incendios.";
-            mensaje.text = mensajeInfo;
-
+            popupSegundoNivelImagen.SetActive(true);
+            mensajeInfo = "Este es el cilindro del extintor y contiene el agente extintor a presión. Este recipiente permite la liberación controlada de dicho agente para sofocar incendios.";
+            mensajePOPUPImagen.text = mensajeInfo;
+            displayImage.sprite = imageExtintorPart3;
             // Pausa el juego
             Time.timeScale = 0f;
             
@@ -148,10 +165,10 @@ public class ItemsCollection : MonoBehaviour
             //EditorUtility.DisplayDialog("Parte: Válvula",
             //    "Esta sería la descripción de la válvula", "Ok", "Cerrar");
             //UnityEngine.Debug.Log("Partes: " + extintorPartCount); 
-            popup.SetActive(true);
-            mensajeInfo = "Esta es el gatillo del extintor, el cual activa la liberación del agente extintor cuando se presiona, permitiendo controlar el fuego de manera rápida y eficaz";
-            mensaje.text = mensajeInfo;
-            
+            popupSegundoNivelImagen.SetActive(true);
+            mensajeInfo = "Este es el gatillo del extintor, el cual activa la liberación del agente extintor cuando se presiona, permitiendo controlar el fuego de manera rápida y eficaz.";
+            mensajePOPUPImagen.text = mensajeInfo;
+            displayImage.sprite = imageExtintorPart4;
             // Pausa el juego
             Time.timeScale = 0f;
             
@@ -181,6 +198,21 @@ public class ItemsCollection : MonoBehaviour
         // Reanuda el juego
         Time.timeScale = 1f;
 
+    } 
+
+    //Función para cerrar el popup de las imágenes
+    public void cerrarPopUpConImagen()
+    {
+        popupSegundoNivelImagen.SetActive(false);
+
+        // Reanuda el juego
+        Time.timeScale = 1f;
+
+    } 
+
+    public void cerrarImagen(){
+        canvasImagen.SetActive(false);
+        //Time.timeScale = 1f;
     }
 
     //Esto es para el primer nivel

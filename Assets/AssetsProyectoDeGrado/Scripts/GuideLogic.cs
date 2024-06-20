@@ -6,6 +6,7 @@ using TMPro;
 public class GuideLogic : MonoBehaviour
 {
     public GameObject popup;
+
     public GameObject canvasInstrucciones;
     public TMP_Text mensaje; 
     public string mensajeInfo = "";
@@ -32,7 +33,7 @@ public class GuideLogic : MonoBehaviour
                 //Debug.Log("Triger guía"); 
                 Destroy(collision.gameObject);
                 popup.SetActive(true);
-                mensajeInfo = "No uses el celular al caminar, ya que aumenta el riesgo de accidentes. Mantén la atención en tu entorno para estar seguro";
+                mensajeInfo = "No uses el celular al caminar, ya que aumenta el riesgo de accidentes. Mantén la atención en tu entorno para estar seguro.";
                 mensaje.text = mensajeInfo;
                 Time.timeScale = 0f;
 
@@ -44,7 +45,7 @@ public class GuideLogic : MonoBehaviour
                 //Debug.Log("Triger guía"); 
                 Destroy(collision.gameObject);
                 popup.SetActive(true);
-                mensajeInfo = "Evita el fuego. Las quemaduras por incendios pueden ser graves. Mantente alejado del fuego por tu seguridad";
+                mensajeInfo = "Evita el fuego. Las quemaduras por incendios pueden ser graves. Mantente alejado del fuego por tu seguridad.";
                 mensaje.text = mensajeInfo;
                 Time.timeScale = 0f;
 
@@ -77,7 +78,7 @@ public class GuideLogic : MonoBehaviour
                 //Debug.Log("Triger guía"); 
                 Destroy(collision.gameObject);
                 popup.SetActive(true);
-                mensajeInfo = "¡Atención! El moho negro generado por estructuras con humedad puede ser perjudicial para la salud. Evita las esporas para evitar problemas respiratorios";
+                mensajeInfo = "¡Atención! El moho negro generado por estructuras con humedad puede ser perjudicial para la salud. Evita las esporas para evitar problemas respiratorios.";
                 mensaje.text = mensajeInfo;
                 Time.timeScale = 0f;
 
@@ -88,7 +89,7 @@ public class GuideLogic : MonoBehaviour
                 //Debug.Log("Triger guía"); 
                 Destroy(collision.gameObject);
                 popup.SetActive(true);
-                mensajeInfo = "¡Cuidado! Algunas estructuras colapsarán una vez las pises. Se rápido y precavido al mismo tiempo";
+                mensajeInfo = "¡Cuidado! Algunas estructuras colapsarán una vez las pises. Se rápido y precavido al mismo tiempo.";
                 mensaje.text = mensajeInfo;
                 Time.timeScale = 0f;
 

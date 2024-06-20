@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//xxx 
 using TMPro;
 
 
@@ -47,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     Usamos enum para guardar los estados de la animaciones. Cada animaci�n tiene un int asignado que es usado luego en el animator controler para saber qu� animaci�n usar. 
     Por ejemplo, para idle, ser� 0
     */
-    private enum MovementState {idle, walking, jumping, falling, Extintor, walkingExtintor }  //<---- Se eliminó el estado "damage". DIcho estado no era necesario. Probar con el estado "Extintor" y "WalkingExtintor"
+    private enum MovementState {idle, walking, jumping, falling, Extintor, walkingExtintor }  
     MovementState state;
 
     private void Start()
@@ -57,9 +56,7 @@ public class PlayerMovement : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
         ic = FindObjectOfType<ItemsCollection>();
-        //sl = FindObjectOfType<ShootingLoogic>(); 
         
-        //col = GetComponent<Collision2D>();
     }
 
     // Update is called once per frame
@@ -70,9 +67,7 @@ public class PlayerMovement : MonoBehaviour
         
         Movement();
         UpdateAnimation(movimiento);
-        //vulnerable();
-
-        //Función para la vulnerabilidad. 
+        
         
 
     }
@@ -83,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         float movimientoHorizontal = Input.GetAxisRaw("Horizontal");
-        //float movimientoVertical = Input.GetAxis("Vertical");
+       
 
         movimiento = new Vector2(movimientoHorizontal, 0) * velocidadMovimiento * Time.deltaTime;
 
@@ -92,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         if ((Input.GetButtonDown("Jump") && isGrounded()) && (colisionExtintor == false)) 
         {
             rb.velocity = new Vector2(movimiento.x, jumpForce); //then we call the variable 
-           // Debug.Log(rb.velocity.y);
+           
         }
 
         
@@ -221,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     /**
-     Method that allow us to jump only when we are touching the ground. In the tiles (ground) we define a layer that we pass in the unity editor. 
+    Method that allow us to jump only when we are touching the ground. In the tiles (ground) we define a layer that we pass in the unity editor. 
     NOTE: READ THE DOCUMENTATION OF BOX CAST
      */
     private bool isGrounded()
@@ -235,19 +230,10 @@ public class PlayerMovement : MonoBehaviour
     */
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /**
-        Condición para activar la animación de daño del jugador.
-        */
-        //if(!isInvulnerable){
-        
-       // if(isInvulnerable == false){ 
            
-
         if ((((collision.gameObject.CompareTag("Enemy1")) && (ic.getHasItem() == false)) ||  (collision.gameObject.CompareTag("Fire")) || (collision.gameObject.CompareTag("MohoNegro"))))   //////////////
         {
-            //Se verifica que el jugador no está actualmente invulnerable
-            //if(!isInvulnerable){
-            //isInvulnerable = true; 
+            
             HandleDamageAnimation();
            Vector2 retrocesoDirection = (transform.position - collision.transform.position).normalized;
 
@@ -255,10 +241,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(retrocesoDirection * retrocesoForce, ForceMode2D.Impulse); 
             
             
-            //timeSinceDamage = 0f; 
-            //collider.enabled = false; 
-
-            //}
+            
         }
         //}
         
@@ -320,7 +303,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Establecer el estado a "da�o"
         //state = MovementState.damage;
-
         // Activar la animaci�n de da�o
         anim.SetBool("damage", true);
 
